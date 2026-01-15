@@ -13,17 +13,12 @@ class Review extends Model
         'rating'
     ];
 
-    /**
-     * Get the user that owns the review
-     */
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the game that owns the review
-     */
     public function game()
     {
         return $this->belongsTo(Game::class);
