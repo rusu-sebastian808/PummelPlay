@@ -17,25 +17,16 @@ class OrderItem extends Model
         'price' => 'decimal:2'
     ];
 
-    /**
-     * Get the order that owns the order item
-     */
     public function order()
     {
         return $this->belongsTo(Order::class);
     }
 
-    /**
-     * Get the game that owns the order item
-     */
     public function game()
     {
         return $this->belongsTo(Game::class);
     }
 
-    /**
-     * Get the total price for this line item
-     */
     public function getTotalPriceAttribute()
     {
         return $this->quantity * $this->price;
