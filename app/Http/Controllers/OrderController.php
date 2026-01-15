@@ -12,9 +12,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the orders.
-     */
+
     public function index()
     {
         if (Auth::user()->isAdmin()) {
@@ -26,9 +24,6 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new order (checkout).
-     */
     public function create()
     {
         $cartItems = Auth::user()->cartItems()->with('game')->get();
@@ -42,9 +37,7 @@ class OrderController extends Controller
         return view('orders.create', compact('cartItems', 'total'));
     }
 
-    /**
-     * Store a newly created order in storage.
-     */
+
     public function store(Request $request)
     {
         $cartItems = Auth::user()->cartItems()->with('game')->get();
@@ -71,19 +64,17 @@ class OrderController extends Controller
                 ]);
             }
 
-            // Clear cart after order
+          
             Auth::user()->cartItems()->delete();
         });
 
         return redirect()->route('orders.index')->with('success', 'Order placed successfully!');
     }
 
-    /**
-     * Display the specified order.
-     */
+  
     public function show(Order $order)
     {
-        // Check if user can view this order
+        
         if (!Auth::user()->isAdmin() && $order->user_id !== Auth::id()) {
             abort(403);
         }
@@ -93,12 +84,10 @@ class OrderController extends Controller
         return view('orders.show', compact('order'));
     }
 
-    /**
-     * Generate PDF invoice for the order.
-     */
+
     public function invoice(Order $order)
     {
-        // Check if user can view this order
+       
         if (!Auth::user()->isAdmin() && $order->user_id !== Auth::id()) {
             abort(403);
         }
@@ -110,9 +99,7 @@ class OrderController extends Controller
         return $pdf->download('invoice-' . $order->id . '.pdf');
     }
 
-    /**
-     * Update the specified order.
-     */
+ 
     public function update(Request $request, Order $order)
     {
         $request->validate([
@@ -126,9 +113,7 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Order status updated!');
     }
 
-    /**
-     * Remove the specified order from storage.
-     */
+  
     public function destroy(Order $order)
     {
         $order->delete();
