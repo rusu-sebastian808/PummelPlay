@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    /**
-     * Store a newly created review.
-     */
+    
     public function store(Request $request)
     {
         $request->validate([
@@ -38,12 +36,10 @@ class ReviewController extends Controller
         return redirect()->back()->with('success', 'Review added successfully!');
     }
 
-    /**
-     * Show the form for editing the specified review.
-     */
+  
     public function edit(Review $review)
     {
-        // Check if review belongs to current user
+       
         if ($review->user_id !== Auth::id()) {
             abort(403);
         }
@@ -51,9 +47,7 @@ class ReviewController extends Controller
         return view('reviews.edit', compact('review'));
     }
 
-    /**
-     * Update the specified review.
-     */
+  
     public function update(Request $request, Review $review)
     {
         $request->validate([
@@ -61,7 +55,7 @@ class ReviewController extends Controller
             'rating' => 'required|integer|min:1|max:5',
         ]);
 
-        // Check if review belongs to current user
+    
         if ($review->user_id !== Auth::id()) {
             abort(403);
         }
@@ -74,12 +68,10 @@ class ReviewController extends Controller
         return redirect()->route('games.show', $review->game_id)->with('success', 'Review updated successfully!');
     }
 
-    /**
-     * Remove the specified review.
-     */
+
     public function destroy(Review $review)
     {
-        // Check if review belongs to current user or user is admin
+        
         if ($review->user_id !== Auth::id() && !Auth::user()->isAdmin()) {
             abort(403);
         }
