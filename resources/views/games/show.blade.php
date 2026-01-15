@@ -27,7 +27,6 @@
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Game Image -->
         <div class="lg:col-span-1">
             <div class="aspect-square bg-gray-700 rounded-lg overflow-hidden mb-4">
                 @if($game->image)
@@ -43,7 +42,6 @@
                 @endif
             </div>
             
-            <!-- Game Stats -->
             <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-4 border border-gray-700">
                 <h3 class="text-lg font-semibold text-white mb-4">Game Statistics</h3>
                 <div class="space-y-3">
@@ -75,9 +73,7 @@
             </div>
         </div>
         
-        <!-- Game Details -->
         <div class="lg:col-span-2">
-            <!-- Description -->
             <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-6">
                 <h3 class="text-xl font-semibold text-white mb-4">About This Game</h3>
                 <p class="text-gray-300 leading-relaxed">{{ $game->description }}</p>
@@ -106,13 +102,11 @@
                 </div>
             </div>
             
-            <!-- Purchase Actions -->
             @auth
                 @if(auth()->user()->isCustomer())
                     <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-6">
                         <h3 class="text-xl font-semibold text-white mb-4">Purchase Options</h3>
                         <div class="flex flex-col sm:flex-row gap-4">
-                            <!-- Add to Cart -->
                             <form action="{{ route('cart.store') }}" method="POST" class="flex-1">
                                 @csrf
                                 <input type="hidden" name="game_id" value="{{ $game->id }}">
@@ -125,7 +119,6 @@
                                 </button>
                             </form>
                             
-                            <!-- Add to Wishlist -->
                             <form action="{{ route('wishlist.store') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="game_id" value="{{ $game->id }}">
@@ -140,7 +133,6 @@
                     </div>
                 @endif
             @else
-                <!-- Guest Purchase Prompt -->
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-6 text-center">
                     <h3 class="text-xl font-semibold text-white mb-4">Ready to Play?</h3>
                     <p class="text-gray-400 mb-4">Create an account or login to purchase this game</p>
@@ -154,15 +146,14 @@
                     </div>
                 </div>
             @endauth
-            
-            <!-- Reviews Section -->
+        
             <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-semibold text-white">Reviews ({{ $reviewCount }})</h3>
                     
                     @auth
                         @if(auth()->user()->isCustomer())
-                            <!-- Add Review Form -->
+               
                             <details class="relative">
                                 <summary class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors cursor-pointer">
                                     Write Review
@@ -203,7 +194,6 @@
                     @endauth
                 </div>
                 
-                <!-- Reviews List -->
                 @if($reviews->count() > 0)
                     <div class="space-y-4">
                         @foreach($reviews as $review)
@@ -236,7 +226,6 @@
                         @endforeach
                     </div>
                     
-                    <!-- Pagination -->
                     <div class="mt-6">
                         {{ $reviews->links() }}
                     </div>
