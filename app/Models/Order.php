@@ -16,25 +16,19 @@ class Order extends Model
         'total_amount' => 'decimal:2'
     ];
 
-    /**
-     * Get the user that owns the order
-     */
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the order items for this order
-     */
+
     public function orderItems()
     {
         return $this->hasMany(OrderItem::class);
     }
 
-    /**
-     * Get the games in this order through order items
-     */
+
     public function games()
     {
         return $this->hasManyThrough(Game::class, OrderItem::class, 'order_id', 'id', 'id', 'game_id');
