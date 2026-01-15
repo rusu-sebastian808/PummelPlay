@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Invoice #{{ $order->id }} - PummelPlay</title>
     <style>
-        /* Font Import for PDF */
+
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         
         * {
@@ -24,7 +24,7 @@
             padding: 20px;
         }
         
-        /* Page Layout */
+
         .invoice-container {
             max-width: 800px;
             margin: 0 auto;
@@ -34,7 +34,7 @@
             overflow: hidden;
         }
         
-        /* Header Section */
+
         .invoice-header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
@@ -111,12 +111,12 @@
             opacity: 0.9;
         }
         
-        /* Main Content */
+ 
         .invoice-body {
             padding: 40px 30px;
         }
         
-        /* Invoice Details Grid */
+
         .invoice-details {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -185,7 +185,7 @@
             border: 1px solid #fecaca;
         }
         
-        /* Billing Address */
+
         .billing-address {
             background: #ffffff;
             border: 2px solid #e5e7eb;
@@ -210,7 +210,6 @@
             margin-bottom: 8px;
         }
         
-        /* Items Table */
         .items-section {
             margin: 40px 0;
         }
@@ -297,7 +296,6 @@
             color: #1f2937;
         }
         
-        /* Totals Section */
         .totals-section {
             margin-top: 30px;
             display: flex;
@@ -350,7 +348,6 @@
             font-weight: 600;
         }
         
-        /* Info Boxes */
         .info-box {
             margin: 30px 0;
             padding: 20px;
@@ -402,7 +399,6 @@
             margin-right: 8px;
         }
         
-        /* Footer */
         .invoice-footer {
             background: #1f2937;
             color: #e5e7eb;
@@ -450,7 +446,6 @@
             margin-top: 15px;
         }
         
-        /* Print Styles */
         @media print {
             body {
                 margin: 0;
@@ -468,7 +463,6 @@
             }
         }
         
-        /* Responsive adjustments for PDF */
         @page {
             margin: 20px;
         }
@@ -476,7 +470,7 @@
 </head>
 <body>
     <div class="invoice-container">
-        <!-- Header -->
+
         <div class="invoice-header">
             <div class="header-content">
                 <div class="company-logo">
@@ -495,11 +489,11 @@
             </div>
         </div>
 
-        <!-- Main Content -->
+
         <div class="invoice-body">
-            <!-- Invoice Details -->
+
             <div class="invoice-details">
-                <!-- Left Column: Invoice Info -->
+     
                 <div class="detail-section">
                     <h3>Invoice Details</h3>
                     <div class="detail-row">
@@ -528,7 +522,7 @@
                     </div>
                 </div>
 
-                <!-- Right Column: Billing Address -->
+
                 <div class="billing-address">
                     <h3>Bill To</h3>
                     <div class="customer-name">{{ $order->user->name }}</div>
@@ -549,7 +543,7 @@
                 </div>
             </div>
 
-            <!-- Items Section -->
+
             <div class="items-section">
                 <h2 class="section-title">Games Purchased</h2>
                 <table class="items-table">
@@ -581,7 +575,6 @@
                 </table>
             </div>
 
-            <!-- Totals -->
             <div class="totals-section">
                 <div class="totals-table">
                     <table>
@@ -611,7 +604,6 @@
                 </div>
             </div>
 
-            <!-- Payment Information -->
             <div class="info-box payment">
                 <h4>💳 Payment Information</h4>
                 <div class="detail-row">
@@ -632,7 +624,6 @@
                 </div>
             </div>
 
-            <!-- Digital Delivery Information -->
             @if($order->status === 'completed')
             <div class="info-box delivery">
                 <h4>🎮 Digital Delivery Confirmation</h4>
@@ -647,7 +638,6 @@
             @endif
         </div>
 
-        <!-- Footer -->
         <div class="invoice-footer">
             <div class="footer-content">
                 <div class="thank-you-message">Thank you for choosing PummelPlay! 🎮</div>
