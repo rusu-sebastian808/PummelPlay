@@ -9,26 +9,19 @@ use Illuminate\Support\Facades\Storage;
 
 class GameController extends Controller
 {
-    /**
-     * Display a listing of the games.
-     */
+
     public function index()
     {
         $games = Game::paginate(12);
         return view('games.index', compact('games'));
     }
 
-    /**
-     * Show the form for creating a new game.
-     */
+ 
     public function create()
     {
         return view('games.create');
     }
 
-    /**
-     * Store a newly created game in storage.
-     */
     public function store(Request $request)
     {
         $request->validate([
@@ -50,9 +43,6 @@ class GameController extends Controller
         return redirect()->route('games.index')->with('success', 'Game created successfully!');
     }
 
-    /**
-     * Display the specified game.
-     */
     public function show(Game $game)
     {
         $reviews = $game->reviews()->with('user')->latest()->paginate(10);
@@ -62,17 +52,11 @@ class GameController extends Controller
         return view('games.show', compact('game', 'reviews', 'averageRating', 'reviewCount'));
     }
 
-    /**
-     * Show the form for editing the specified game.
-     */
     public function edit(Game $game)
     {
         return view('games.edit', compact('game'));
     }
 
-    /**
-     * Update the specified game in storage.
-     */
     public function update(Request $request, Game $game)
     {
         $request->validate([
@@ -86,7 +70,7 @@ class GameController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('image')) {
-            // Delete old image if exists
+       
             if ($game->image && Storage::disk('public')->exists($game->image)) {
                 Storage::disk('public')->delete($game->image);
             }
@@ -98,12 +82,8 @@ class GameController extends Controller
         return redirect()->route('games.index')->with('success', 'Game updated successfully!');
     }
 
-    /**
-     * Remove the specified game from storage.
-     */
     public function destroy(Game $game)
     {
-        // Delete image if exists
         if ($game->image && Storage::disk('public')->exists($game->image)) {
             Storage::disk('public')->delete($game->image);
         }
@@ -113,22 +93,18 @@ class GameController extends Controller
         return redirect()->route('games.index')->with('success', 'Game deleted successfully!');
     }
 
-    /**
-     * Display games by genre
-     */
+ 
     public function byGenre($genre)
     {
-        // Convert URL parameter to proper case to match database values
+       
         $properGenre = ucfirst(strtolower($genre));
         $games = Game::where('genre', $properGenre)->paginate(12);
         
-        // Pass the original genre parameter for URL matching
+    
         return view('games.index', compact('games', 'genre'));
     }
 
-    /**
-     * Search games
-     */
+ 
     public function search(Request $request)
     {
         $query = $request->get('q');
