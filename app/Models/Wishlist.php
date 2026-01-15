@@ -11,17 +11,12 @@ class Wishlist extends Model
         'game_id'
     ];
 
-    /**
-     * Get the user that owns the wishlist item
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * Get the game that owns the wishlist item
-     */
+
     public function game()
     {
         return $this->belongsTo(Game::class);
