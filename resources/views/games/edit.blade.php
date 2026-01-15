@@ -17,7 +17,6 @@
                 @csrf
                 @method('PATCH')
                 
-                <!-- Title -->
                 <div class="mb-6">
                     <label for="title" class="block text-gray-300 font-medium mb-2">Game Title</label>
                     <input type="text" 
@@ -32,7 +31,6 @@
                     @enderror
                 </div>
 
-                <!-- Description -->
                 <div class="mb-6">
                     <label for="description" class="block text-gray-300 font-medium mb-2">Description</label>
                     <textarea id="description" 
@@ -46,7 +44,6 @@
                     @enderror
                 </div>
 
-                <!-- Price -->
                 <div class="mb-6">
                     <label for="price" class="block text-gray-300 font-medium mb-2">Price ($)</label>
                     <input type="number" 
@@ -63,7 +60,6 @@
                     @enderror
                 </div>
 
-                <!-- Genre -->
                 <div class="mb-6">
                     <label for="genre" class="block text-gray-300 font-medium mb-2">Genre</label>
                     <select id="genre" 
@@ -85,7 +81,6 @@
                     @enderror
                 </div>
 
-                <!-- Current Image -->
                 @if($game->image)
                     <div class="mb-6">
                         <label class="block text-gray-300 font-medium mb-2">Current Game Cover</label>
@@ -98,13 +93,11 @@
                     </div>
                 @endif
 
-                <!-- New Image -->
                 <div class="mb-6">
                     <label for="image" class="block text-gray-300 font-medium mb-2">
                         {{ $game->image ? 'Replace Game Cover' : 'Game Cover Image' }}
                     </label>
                     
-                    <!-- Image Preview for new image -->
                     <div id="imagePreview" class="hidden mb-4 relative">
                         <img id="previewImg" class="w-full h-48 object-cover rounded-lg border border-gray-600" alt="New Preview">
                         <button type="button" onclick="clearImagePreview()" class="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center">
@@ -133,7 +126,6 @@
                     @enderror
                 </div>
 
-                <!-- JavaScript for Image Preview -->
                 <script>
                     function previewImage(input) {
                         if (input.files && input.files[0]) {
@@ -152,7 +144,6 @@
                     }
                 </script>
 
-                <!-- Submit Button -->
                 <div class="flex justify-end space-x-4">
                     <a href="{{ route('games.show', $game) }}" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
                         Cancel
