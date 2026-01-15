@@ -7,12 +7,12 @@
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     @if($cartItems->count() > 0)
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Cart Items -->
+        
             <div class="lg:col-span-2 space-y-4">
                 @foreach($cartItems as $item)
                     <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 transition-all hover:border-gray-600">
                         <div class="flex items-center space-x-4">
-                            <!-- Game Image -->
+                        
                             <div class="w-20 h-20 bg-gray-700 rounded-lg overflow-hidden flex-shrink-0">
                                 @if($item->game->image)
                                     <img src="{{ asset('storage/' . $item->game->image) }}" 
@@ -27,14 +27,14 @@
                                 @endif
                             </div>
                             
-                            <!-- Game Details -->
+                      
                             <div class="flex-1 min-w-0">
                                 <h3 class="text-lg font-semibold text-white truncate">{{ $item->game->title }}</h3>
                                 <p class="text-gray-400 text-sm">{{ $item->game->genre }}</p>
                                 <p class="text-blue-400 font-bold">${{ number_format($item->game->price, 2) }}</p>
                             </div>
                             
-                            <!-- Quantity Controls -->
+               
                             <div class="flex items-center space-x-3">
                                 <form action="{{ route('cart.update', $item) }}" method="POST" class="flex items-center space-x-2">
                                     @csrf
@@ -50,7 +50,7 @@
                                            onchange="this.form.submit()">
                                 </form>
                                 
-                                <!-- Remove Button -->
+                          
                                 <form action="{{ route('cart.destroy', $item) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
@@ -62,7 +62,7 @@
                                 </form>
                             </div>
                             
-                            <!-- Subtotal -->
+                      
                             <div class="text-right">
                                 <p class="text-white font-bold">${{ number_format($item->total_price, 2) }}</p>
                                 <p class="text-gray-400 text-sm">subtotal</p>
@@ -71,7 +71,7 @@
                     </div>
                 @endforeach
                 
-                <!-- Cart Actions -->
+      
                 <div class="flex justify-between items-center mt-6">
                     <a href="{{ route('games.index') }}" class="text-blue-400 hover:text-blue-300 flex items-center space-x-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -93,7 +93,6 @@
                 </div>
             </div>
             
-            <!-- Order Summary -->
             <div class="lg:col-span-1">
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 sticky top-20">
                     <h3 class="text-xl font-semibold text-white mb-6">Order Summary</h3>
@@ -115,7 +114,6 @@
                         </div>
                     </div>
                     
-                    <!-- Checkout Button -->
                     <a href="{{ route('orders.create') }}" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
@@ -130,7 +128,6 @@
             </div>
         </div>
     @else
-        <!-- Empty Cart -->
         <div class="text-center py-16">
             <div class="bg-gray-800/30 backdrop-blur-sm rounded-lg p-8 border border-gray-700 max-w-md mx-auto">
                 <svg class="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
