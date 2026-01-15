@@ -8,13 +8,11 @@ use App\Models\Game;
 
 class GameSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+
     public function run(): void
     {
         $games = [
-            // RPG Games
+           
             [
                 'title' => 'The Witcher 3: Wild Hunt',
                 'description' => 'A story-driven, next-generation open world role-playing game set in a visually stunning fantasy universe full of meaningful choices and impactful consequences.',
@@ -44,7 +42,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Action Games
+        
             [
                 'title' => 'Grand Theft Auto V',
                 'description' => 'Experience Rockstar Games\' largest open world yet in this crime epic that intertwines three unique criminal storylines.',
@@ -74,7 +72,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Adventure Games
+           
             [
                 'title' => 'Red Dead Redemption 2',
                 'description' => 'Winner of over 175 Game of the Year Awards, experience the epic tale of outlaw Arthur Morgan and the Van der Linde gang.',
@@ -104,7 +102,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Racing Games
+        
             [
                 'title' => 'Forza Horizon 5',
                 'description' => 'Your Ultimate Horizon Adventure awaits! Explore the vibrant and ever-evolving open world landscapes of Mexico.',
@@ -134,7 +132,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Strategy Games
+       
             [
                 'title' => 'Civilization VI',
                 'description' => 'Build an empire to stand the test of time in the ultimate turn-based strategy experience.',
@@ -164,7 +162,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Platformer Games
+      
             [
                 'title' => 'Super Mario Odyssey',
                 'description' => 'Join Mario on a massive, globe-trotting 3D adventure and use his incredible new abilities to collect Moons.',
@@ -194,7 +192,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Stealth Games
+       
             [
                 'title' => 'Metal Gear Solid V',
                 'description' => 'Experience ultimate freedom in this open-world stealth game. Create your own infiltration methods in a world where every enemy action affects the game.',
@@ -224,7 +222,7 @@ class GameSeeder extends Seeder
                 'image' => null
             ],
 
-            // Simulation Games
+      s
             [
                 'title' => 'Microsoft Flight Simulator',
                 'description' => 'The world is at your fingertips. From light planes to wide-body jets, fly highly detailed aircraft in the next generation of Microsoft Flight Simulator.',
