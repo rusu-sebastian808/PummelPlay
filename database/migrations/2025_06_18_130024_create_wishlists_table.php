@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+  
     public function up(): void
     {
         Schema::create('wishlists', function (Blueprint $table) {
@@ -17,13 +15,11 @@ return new class extends Migration
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->timestamps();
             
-            $table->unique(['user_id', 'game_id']); // Prevent duplicate wishlist entries
+            $table->unique(['user_id', 'game_id']); 
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
+   
     public function down(): void
     {
         Schema::dropIfExists('wishlists');
