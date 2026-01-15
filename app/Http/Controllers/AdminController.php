@@ -12,18 +12,12 @@ use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-    /**
-     * Display the admin dashboard with reports.
-     */
     public function dashboard()
     {
-        // Total orders
         $totalOrders = Order::count();
         
-        // Total revenue
         $totalRevenue = Order::where('status', 'completed')->sum('total_amount');
         
-        // Revenue per month
         $revenuePerMonth = Order::where('status', 'completed')
             ->where(DB::raw("strftime('%Y', created_at)"), '=', date('Y'))
             ->select(
@@ -34,7 +28,6 @@ class AdminController extends Controller
             ->orderBy('month')
             ->get();
         
-        // Most sold games
         $mostSoldGames = OrderItem::select('game_id', DB::raw('SUM(quantity) as total_sold'))
             ->with('game')
             ->groupBy('game_id')
@@ -42,7 +35,6 @@ class AdminController extends Controller
             ->limit(10)
             ->get();
         
-        // Least sold games
         $leastSoldGames = Game::leftJoin('order_items', 'games.id', '=', 'order_items.game_id')
             ->select('games.*', DB::raw('COALESCE(SUM(order_items.quantity), 0) as total_sold'))
             ->groupBy('games.id')
@@ -50,7 +42,6 @@ class AdminController extends Controller
             ->limit(10)
             ->get();
         
-        // Most wishlisted games
         $mostWishlistedGames = Wishlist::select('game_id', DB::raw('COUNT(*) as wishlist_count'))
             ->with('game')
             ->groupBy('game_id')
@@ -58,7 +49,6 @@ class AdminController extends Controller
             ->limit(10)
             ->get();
         
-        // Top spenders
         $topSpenders = User::where('role', 'customer')
             ->withSum(['orders' => function ($query) {
                 $query->where('status', 'completed');
@@ -67,13 +57,11 @@ class AdminController extends Controller
             ->limit(10)
             ->get();
         
-        // Average spending per customer
         $averageSpending = User::where('role', 'customer')
             ->join('orders', 'users.id', '=', 'orders.user_id')
             ->where('orders.status', 'completed')
             ->avg('orders.total_amount');
         
-        // Most active customers (by number of orders)
         $mostActiveCustomers = User::where('role', 'customer')
             ->withCount(['orders' => function ($query) {
                 $query->where('status', 'completed');
@@ -95,9 +83,6 @@ class AdminController extends Controller
         ));
     }
 
-    /**
-     * Display detailed revenue report.
-     */
     public function revenueReport()
     {
         $yearlyRevenue = Order::where('status', 'completed')
@@ -149,9 +134,6 @@ class AdminController extends Controller
         return view('admin.revenue-report', compact('yearlyRevenue', 'monthlyRevenue', 'dailyRevenue'));
     }
 
-    /**
-     * Display games performance report.
-     */
     public function gamesReport()
     {
         $gamePerformance = Game::leftJoin('order_items', 'games.id', '=', 'order_items.game_id')
@@ -172,9 +154,6 @@ class AdminController extends Controller
         return view('admin.games-report', compact('gamePerformance'));
     }
 
-    /**
-     * Display customers report.
-     */
     public function customersReport()
     {
         $customerStats = User::where('role', 'customer')
