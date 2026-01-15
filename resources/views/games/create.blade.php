@@ -16,7 +16,7 @@
             <form action="{{ route('admin.games.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 
-                <!-- Title -->
+        
                 <div class="mb-6">
                     <label for="title" class="block text-gray-300 font-medium mb-2">Game Title</label>
                     <input type="text" 
@@ -31,7 +31,7 @@
                     @enderror
                 </div>
 
-                <!-- Description -->
+      
                 <div class="mb-6">
                     <label for="description" class="block text-gray-300 font-medium mb-2">Description</label>
                     <textarea id="description" 
@@ -45,7 +45,6 @@
                     @enderror
                 </div>
 
-                <!-- Price -->
                 <div class="mb-6">
                     <label for="price" class="block text-gray-300 font-medium mb-2">Price ($)</label>
                     <input type="number" 
@@ -62,7 +61,6 @@
                     @enderror
                 </div>
 
-                <!-- Genre -->
                 <div class="mb-6">
                     <label for="genre" class="block text-gray-300 font-medium mb-2">Genre</label>
                     <select id="genre" 
@@ -84,11 +82,9 @@
                     @enderror
                 </div>
 
-                <!-- Image -->
                 <div class="mb-6">
                     <label for="image" class="block text-gray-300 font-medium mb-2">Game Cover Image</label>
                     
-                    <!-- Image Preview -->
                     <div id="imagePreview" class="hidden mb-4 relative">
                         <img id="previewImg" class="w-full h-48 object-cover rounded-lg border border-gray-600" alt="Preview">
                         <button type="button" onclick="clearImagePreview()" class="absolute top-2 right-2 bg-red-600 hover:bg-red-700 text-white rounded-full w-8 h-8 flex items-center justify-center">
@@ -98,7 +94,6 @@
                         </button>
                     </div>
                     
-                    <!-- File Input -->
                     <div class="relative">
                         <input type="file" 
                                id="image" 
@@ -107,7 +102,6 @@
                                onchange="previewImage(this)"
                                class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-2 text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-blue-600 file:text-white hover:file:bg-blue-700">
                         
-                        <!-- Drag & Drop Zone -->
                         <div id="dropZone" class="hidden mt-4 border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-blue-500 transition-colors cursor-pointer"
                              onclick="document.getElementById('image').click()">
                             <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +123,6 @@
                     @enderror
                 </div>
 
-                <!-- JavaScript for Image Preview -->
                 <script>
                     function previewImage(input) {
                         if (input.files && input.files[0]) {
@@ -146,8 +139,7 @@
                         document.getElementById('image').value = '';
                         document.getElementById('imagePreview').classList.add('hidden');
                     }
-                    
-                    // Drag and drop functionality
+ 
                     const dropZone = document.getElementById('dropZone');
                     const fileInput = document.getElementById('image');
                     
@@ -172,7 +164,6 @@
                     }
                 </script>
 
-                <!-- Submit Button -->
                 <div class="flex justify-end space-x-4">
                     <a href="{{ route('games.index') }}" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-3 rounded-lg font-medium transition-colors">
                         Cancel
