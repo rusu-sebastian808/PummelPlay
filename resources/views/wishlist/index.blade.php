@@ -16,7 +16,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 @foreach($wishlistItems as $item)
                     <div class="bg-gray-800/30 backdrop-blur-sm rounded-lg overflow-hidden border border-gray-700 hover:border-gray-600 transition-all duration-300 hover:transform hover:scale-105">
-                        <!-- Game Image -->
+             
                         <div class="aspect-video bg-gray-700 relative overflow-hidden">
                             @if($item->game->image)
                                 <img src="{{ asset('storage/' . $item->game->image) }}" 
@@ -30,14 +30,14 @@
                                 </div>
                             @endif
                             
-                            <!-- Genre Badge -->
+                      
                             <div class="absolute top-2 left-2">
                                 <span class="bg-purple-600/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full">
                                     {{ $item->game->genre }}
                                 </span>
                             </div>
                             
-                            <!-- Remove Button -->
+                      
                             <form action="{{ route('wishlist.destroy', $item) }}" method="POST" class="absolute top-2 right-2">
                                 @csrf
                                 @method('DELETE')
@@ -49,7 +49,7 @@
                             </form>
                         </div>
                         
-                        <!-- Game Info -->
+           
                         <div class="p-4">
                             <h3 class="text-lg font-bold text-white mb-2 line-clamp-1">{{ $item->game->title }}</h3>
                             <p class="text-gray-400 text-sm mb-3 line-clamp-2">{{ $item->game->description }}</p>
@@ -59,7 +59,7 @@
                                 <span class="text-gray-500 text-sm">Added {{ $item->created_at->diffForHumans() }}</span>
                             </div>
                             
-                            <!-- Action Buttons -->
+        
                             <div class="flex space-x-2">
                                 <form action="{{ route('wishlist.moveToCart', $item) }}" method="POST" class="flex-1">
                                     @csrf
@@ -77,12 +77,12 @@
                 @endforeach
             </div>
             
-            <!-- Pagination -->
+    
             <div class="mt-8">
                 {{ $wishlistItems->links() }}
             </div>
         @else
-            <!-- Empty Wishlist -->
+ 
             <div class="text-center py-16">
                 <div class="bg-gray-800/30 backdrop-blur-sm rounded-lg p-8 border border-gray-700 max-w-md mx-auto">
                     <svg class="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
