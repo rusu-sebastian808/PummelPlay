@@ -25,10 +25,10 @@
 </x-slot>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Search and Filter Bar -->
+
     <div class="mb-8 card-gaming rounded-lg p-6">
         <div class="flex flex-col md:flex-row gap-4">
-            <!-- Search Form -->
+    
             <form action="{{ route('games.search') }}" method="GET" class="flex-1">
                 <div class="relative">
                     <input type="text" 
@@ -42,7 +42,7 @@
                 </div>
             </form>
             
-            <!-- Genre Filter -->
+      
             <div class="flex flex-wrap gap-2">
                 <a href="{{ route('games.index') }}" 
                    class="px-4 py-2 rounded-lg text-sm font-medium transition-colors {{ !isset($genre) ? 'bg-blue-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600' }}">
@@ -59,7 +59,6 @@
     </div>
 
     @if($games->count() > 0)
-        <!-- Games Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
             @foreach($games as $game)
                 <div class="card-gaming rounded-lg overflow-hidden transition-all duration-300 hover:transform hover:scale-105 float-animation">
@@ -77,14 +76,14 @@
                             </div>
                         @endif
                         
-                        <!-- Genre Badge -->
+             
                         <div class="absolute top-2 left-2">
                             <span class="bg-gaming-purple text-white text-xs px-2 py-1 rounded-full font-medium">
                                 {{ $game->genre }}
                             </span>
                         </div>
                         
-                        <!-- Rating -->
+              
                         @if($game->averageRating() > 0)
                             <div class="absolute top-2 right-2 bg-gray-900/90 backdrop-blur-sm text-white text-xs px-2 py-1 rounded-full flex items-center space-x-1">
                                 <svg class="w-3 h-3 text-yellow-400 fill-current" viewBox="0 0 24 24">
@@ -95,7 +94,7 @@
                         @endif
                     </div>
                     
-                    <!-- Game Info -->
+           
                     <div class="p-4">
                         <h3 class="text-lg font-bold text-white mb-2 line-clamp-1">{{ $game->title }}</h3>
                         <p class="text-gray-400 text-sm mb-3 line-clamp-2">{{ $game->description }}</p>
@@ -107,7 +106,7 @@
                             @endif
                         </div>
                         
-                        <!-- Action Buttons -->
+                   
                         <div class="flex space-x-2">
                             <a href="{{ route('games.show', $game) }}" 
                                class="flex-1 btn-primary text-white text-center py-2 px-4 rounded-lg font-medium">
@@ -116,7 +115,7 @@
                             
                             @auth
                                 @if(auth()->user()->isCustomer())
-                                    <!-- Add to Cart -->
+                     
                                     <form action="{{ route('cart.store') }}" method="POST" class="inline">
                                         @csrf
                                         <input type="hidden" name="game_id" value="{{ $game->id }}">
@@ -128,7 +127,7 @@
                                         </button>
                                     </form>
                                     
-                                    <!-- Add to Wishlist -->
+                      
                                     <form action="{{ route('wishlist.store') }}" method="POST" class="inline">
                                         @csrf
                                         <input type="hidden" name="game_id" value="{{ $game->id }}">
@@ -141,7 +140,7 @@
                                 @endif
                                 
                                 @if(auth()->user()->isAdmin())
-                                    <!-- Admin Actions -->
+                   
                                     <a href="{{ route('admin.games.edit', $game) }}" 
                                        class="bg-yellow-600 hover:bg-yellow-700 text-white p-2 rounded-lg transition-colors" title="Edit Game">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,12 +155,12 @@
             @endforeach
         </div>
         
-        <!-- Pagination -->
+
         <div class="flex justify-center">
             {{ $games->links() }}
         </div>
     @else
-        <!-- No Games Found -->
+   
         <div class="text-center py-16">
             <div class="card-gaming rounded-lg p-8 max-w-md mx-auto">
                 <svg class="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
