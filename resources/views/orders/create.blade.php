@@ -13,7 +13,6 @@
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Order Items -->
             <div class="lg:col-span-2">
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
                     <h3 class="text-xl font-semibold text-white mb-6">Order Summary</h3>
@@ -21,7 +20,6 @@
                     <div class="space-y-4">
                         @foreach($cartItems as $item)
                             <div class="flex items-center space-x-4 p-4 bg-gray-700/50 rounded-lg">
-                                <!-- Game Image -->
                                 <div class="w-16 h-16 bg-gray-700 rounded-lg overflow-hidden flex-shrink-0">
                                     @if($item->game->image)
                                         <img src="{{ asset('storage/' . $item->game->image) }}" 
@@ -36,14 +34,14 @@
                                     @endif
                                 </div>
                                 
-                                <!-- Game Details -->
+            
                                 <div class="flex-1 min-w-0">
                                     <h4 class="font-semibold text-white truncate">{{ $item->game->title }}</h4>
                                     <p class="text-gray-400 text-sm">{{ $item->game->genre }}</p>
                                     <p class="text-gray-400 text-sm">Quantity: {{ $item->quantity }}</p>
                                 </div>
                                 
-                                <!-- Price -->
+          
                                 <div class="text-right">
                                     <p class="text-white font-bold">${{ number_format($item->game->price * $item->quantity, 2) }}</p>
                                     <p class="text-gray-400 text-sm">${{ number_format($item->game->price, 2) }} each</p>
@@ -54,7 +52,7 @@
                 </div>
             </div>
             
-            <!-- Payment Summary -->
+
             <div class="lg:col-span-1">
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 sticky top-20">
                     <h3 class="text-xl font-semibold text-white mb-6">Payment Summary</h3>
@@ -80,7 +78,7 @@
                         </div>
                     </div>
 
-                    <!-- Payment Method -->
+   
                     <div class="mb-6">
                         <h4 class="text-lg font-medium text-white mb-4">Payment Method</h4>
                         <div class="space-y-3">
@@ -95,7 +93,7 @@
                         </div>
                     </div>
 
-                    <!-- Billing Information -->
+    
                     <div class="mb-6">
                         <h4 class="text-lg font-medium text-white mb-4">Billing Information</h4>
                         <div class="text-gray-300">
@@ -104,7 +102,7 @@
                         </div>
                     </div>
                     
-                    <!-- Place Order Button -->
+
                     <form action="{{ route('orders.store') }}" method="POST">
                         @csrf
                         <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-semibold transition-colors flex items-center justify-center space-x-2">
