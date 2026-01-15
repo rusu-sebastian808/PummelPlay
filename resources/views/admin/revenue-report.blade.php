@@ -12,7 +12,7 @@
     </x-slot>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Yearly Revenue -->
+    
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-8">
             <h3 class="text-xl font-semibold text-white mb-6">Yearly Revenue Overview</h3>
             
@@ -54,12 +54,11 @@
             @endif
         </div>
 
-        <!-- Monthly Revenue for Current Year -->
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-8">
             <h3 class="text-xl font-semibold text-white mb-6">Monthly Revenue - {{ date('Y') }}</h3>
             
             @if($monthlyRevenue->count() > 0)
-                <!-- Chart Visualization -->
+
                 <div class="grid grid-cols-12 gap-2 h-64 mb-6">
                     @php
                         $maxRevenue = $monthlyRevenue->max('revenue') ?: 1;
@@ -83,7 +82,7 @@
                     @endfor
                 </div>
 
-                <!-- Monthly Data Table -->
+         
                 <div class="overflow-x-auto">
                     <table class="w-full text-left">
                         <thead>
@@ -113,12 +112,12 @@
             @endif
         </div>
 
-        <!-- Daily Revenue for Current Month -->
+
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <h3 class="text-xl font-semibold text-white mb-6">Daily Revenue - {{ date('F Y') }}</h3>
             
             @if($dailyRevenue->count() > 0)
-                <!-- Daily Chart -->
+             
                 <div class="grid gap-1 h-40 mb-6" style="grid-template-columns: repeat({{ $dailyRevenue->count() }}, 1fr);">
                     @php
                         $maxDailyRevenue = $dailyRevenue->max('revenue') ?: 1;
@@ -139,7 +138,7 @@
                     @endforeach
                 </div>
 
-                <!-- Daily Summary Stats -->
+  
                 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div class="bg-gray-700/50 rounded-lg p-4 text-center">
                         <p class="text-gray-400 text-sm">Total Days</p>
