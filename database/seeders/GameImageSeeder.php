@@ -8,9 +8,7 @@ use App\Models\Game;
 
 class GameImageSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
+ 
     public function run(): void
     {
         $gameImages = [
