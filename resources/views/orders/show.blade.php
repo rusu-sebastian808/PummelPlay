@@ -21,9 +21,9 @@
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <!-- Order Details -->
+  
             <div class="lg:col-span-2">
-                <!-- Order Status Card -->
+       
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-6">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-xl font-semibold text-white">Order Status</h3>
@@ -57,14 +57,14 @@
                     </div>
                 </div>
 
-                <!-- Order Items -->
+         
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
                     <h3 class="text-xl font-semibold text-white mb-6">Games in this Order</h3>
                     
                     <div class="space-y-4">
                         @foreach($order->orderItems as $item)
                             <div class="flex items-center space-x-4 p-4 bg-gray-700/50 rounded-lg border border-gray-600">
-                                <!-- Game Image -->
+                         
                                 <div class="w-16 h-16 bg-gray-600 rounded-lg overflow-hidden flex-shrink-0">
                                     @if($item->game->image)
                                         <img src="{{ asset('storage/' . $item->game->image) }}" 
@@ -79,14 +79,14 @@
                                     @endif
                                 </div>
                                 
-                                <!-- Game Details -->
+                 
                                 <div class="flex-1 min-w-0">
                                     <h4 class="text-lg font-semibold text-white truncate">{{ $item->game->title }}</h4>
                                     <p class="text-gray-400 text-sm">{{ $item->game->genre }}</p>
                                     <p class="text-gray-300 text-sm mt-1 line-clamp-2">{{ Str::limit($item->game->description, 100) }}</p>
                                 </div>
                                 
-                                <!-- Quantity and Price -->
+            
                                 <div class="text-right flex-shrink-0">
                                     <div class="text-gray-400 text-sm">Quantity: {{ $item->quantity }}</div>
                                     <div class="text-gray-400 text-sm">Unit Price: ${{ number_format($item->price, 2) }}</div>
@@ -95,7 +95,7 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Action Button -->
+          
                                 <div class="flex-shrink-0">
                                     <a href="{{ route('games.show', $item->game) }}" 
                                        class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors">
@@ -108,9 +108,9 @@
                 </div>
             </div>
             
-            <!-- Order Summary Sidebar -->
+
             <div class="lg:col-span-1">
-                <!-- Order Summary -->
+              
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-6">
                     <h3 class="text-xl font-semibold text-white mb-4">Order Summary</h3>
                     
@@ -144,7 +144,7 @@
                     </div>
                 </div>
                 
-                <!-- Order Actions -->
+      
                 <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-6">
                     <h3 class="text-xl font-semibold text-white mb-4">Actions</h3>
                     
@@ -177,7 +177,7 @@
                 </div>
                 
                 @if(auth()->user()->isAdmin())
-                    <!-- Admin Actions -->
+      
                     <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
                         <h3 class="text-xl font-semibold text-white mb-4">Admin Actions</h3>
                         
