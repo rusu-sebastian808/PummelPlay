@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <!-- Games Performance Table -->
+
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <div class="flex justify-between items-center mb-6">
                 <h3 class="text-xl font-semibold text-white">Detailed Game Performance</h3>
@@ -106,7 +106,7 @@
                                 <tr class="border-b border-gray-700 hover:bg-gray-700/30 transition-colors">
                                     <td class="py-4 px-4">
                                         <div class="flex items-center space-x-3">
-                                            <!-- Game Image -->
+                                    
                                             <div class="w-12 h-12 bg-gray-600 rounded-lg overflow-hidden flex-shrink-0">
                                                 @if($game->image)
                                                     <img src="{{ asset('storage/' . $game->image) }}" 
@@ -120,7 +120,7 @@
                                                     </div>
                                                 @endif
                                             </div>
-                                            <!-- Game Info -->
+                                       
                                             <div>
                                                 <h4 class="font-semibold text-white">{{ $game->title }}</h4>
                                                 <p class="text-gray-400 text-sm">{{ Str::limit($game->description, 40) }}</p>
@@ -179,7 +179,7 @@
                     </table>
                 </div>
 
-                <!-- Performance Insights -->
+                
                 <div class="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     @php
                         $bestSeller = $gamePerformance->where('total_sold', $gamePerformance->max('total_sold'))->first();
@@ -187,7 +187,7 @@
                         $topRated = $gamePerformance->where('average_rating', $gamePerformance->max('average_rating'))->first();
                     @endphp
 
-                    <!-- Best Seller -->
+          
                     @if($bestSeller && $bestSeller->total_sold > 0)
                         <div class="bg-green-600/20 border border-green-600/30 rounded-lg p-4">
                             <h4 class="text-green-400 font-semibold mb-2">🏆 Best Seller</h4>
@@ -196,7 +196,7 @@
                         </div>
                     @endif
 
-                    <!-- Top Revenue -->
+                 
                     @if($topRevenue && $topRevenue->revenue > 0)
                         <div class="bg-purple-600/20 border border-purple-600/30 rounded-lg p-4">
                             <h4 class="text-purple-400 font-semibold mb-2">💰 Top Revenue</h4>
@@ -205,7 +205,7 @@
                         </div>
                     @endif
 
-                    <!-- Top Rated -->
+                 
                     @if($topRated && $topRated->average_rating > 0)
                         <div class="bg-yellow-600/20 border border-yellow-600/30 rounded-lg p-4">
                             <h4 class="text-yellow-400 font-semibold mb-2">⭐ Top Rated</h4>
@@ -222,8 +222,6 @@
 
     <script>
         function sortTable(criteria) {
-            // This would require JavaScript implementation for client-side sorting
-            // For now, we'll just refresh the page with a sort parameter
             const url = new URL(window.location);
             url.searchParams.set('sort', criteria);
             window.location = url;
