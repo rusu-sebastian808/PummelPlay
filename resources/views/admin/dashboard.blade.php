@@ -17,9 +17,9 @@
 </x-slot>
 
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Summary Cards -->
+    
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <!-- Total Orders -->
+   
         <div class="bg-gaming-blue rounded-lg p-6 text-white glow-animation">
             <div class="flex items-center justify-between">
                 <div>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <!-- Total Revenue -->
+     
         <div class="bg-gaming-green rounded-lg p-6 text-white glow-animation">
             <div class="flex items-center justify-between">
                 <div>
@@ -49,7 +49,7 @@
             </div>
         </div>
 
-        <!-- Average Spending -->
+      
         <div class="bg-gaming-purple rounded-lg p-6 text-white glow-animation">
             <div class="flex items-center justify-between">
                 <div>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <!-- Total Games -->
+  
         <div class="bg-gaming-pink rounded-lg p-6 text-white glow-animation">
             <div class="flex items-center justify-between">
                 <div>
@@ -80,7 +80,7 @@
         </div>
     </div>
 
-    <!-- Revenue Chart -->
+
     <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700 mb-8">
         <h3 class="text-xl font-semibold text-white mb-4">Monthly Revenue ({{ date('Y') }})</h3>
         <div class="grid grid-cols-12 gap-2 h-64">
@@ -104,9 +104,9 @@
         </div>
     </div>
 
-    <!-- Reports Grid -->
+
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-        <!-- Most Sold Games -->
+
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-semibold text-white">Most Sold Games</h3>
@@ -132,7 +132,7 @@
             @endif
         </div>
 
-        <!-- Top Spenders -->
+ 
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-xl font-semibold text-white">Top Spenders</h3>
@@ -158,7 +158,7 @@
             @endif
         </div>
 
-        <!-- Most Wishlisted Games -->
+ 
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <h3 class="text-xl font-semibold text-white mb-4">Most Wishlisted Games</h3>
             @if($mostWishlistedGames->count() > 0)
@@ -181,7 +181,7 @@
             @endif
         </div>
 
-        <!-- Most Active Customers -->
+    
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
             <h3 class="text-xl font-semibold text-white mb-4">Most Active Customers</h3>
             @if($mostActiveCustomers->count() > 0)
@@ -205,7 +205,6 @@
         </div>
     </div>
 
-    <!-- Least Sold Games -->
     <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
         <h3 class="text-xl font-semibold text-white mb-4">Least Sold Games (Need Attention)</h3>
         @if($leastSoldGames->count() > 0)
