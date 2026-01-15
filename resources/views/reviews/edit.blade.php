@@ -13,9 +13,9 @@
 
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700">
-            <!-- Game Info -->
+      
             <div class="flex items-center space-x-4 mb-6 p-4 bg-gray-700/50 rounded-lg">
-                <!-- Game Image -->
+  
                 <div class="w-16 h-16 bg-gray-600 rounded-lg overflow-hidden flex-shrink-0">
                     @if($review->game->image)
                         <img src="{{ asset('storage/' . $review->game->image) }}" 
@@ -30,7 +30,7 @@
                     @endif
                 </div>
                 
-                <!-- Game Details -->
+  
                 <div>
                     <h3 class="text-xl font-bold text-white">{{ $review->game->title }}</h3>
                     <p class="text-gray-400 text-sm">{{ $review->game->genre }} • ${{ number_format($review->game->price, 2) }}</p>
@@ -38,12 +38,12 @@
                 </div>
             </div>
 
-            <!-- Edit Review Form -->
+   
             <form method="POST" action="{{ route('reviews.update', $review) }}" class="space-y-6">
                 @csrf
                 @method('PATCH')
 
-                <!-- Rating -->
+        
                 <div>
                     <label for="rating" class="block text-gray-300 font-medium mb-3">Rating</label>
                     <div class="flex items-center space-x-2">
@@ -67,7 +67,6 @@
                     @enderror
                 </div>
 
-                <!-- Review Text -->
                 <div>
                     <label for="review" class="block text-gray-300 font-medium mb-2">Your Review</label>
                     <textarea 
@@ -78,7 +77,6 @@
                         class="w-full bg-gray-700 border border-gray-600 rounded-lg px-4 py-3 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
                         required>{{ old('review', $review->review) }}</textarea>
                     
-                    <!-- Character Counter -->
                     <div class="flex justify-between items-center mt-2">
                         <span class="text-gray-400 text-sm">Share your honest opinion to help other gamers</span>
                         <span class="text-gray-400 text-sm" id="char-count">
@@ -91,7 +89,6 @@
                     @enderror
                 </div>
 
-                <!-- Review Guidelines -->
                 <div class="bg-blue-600/10 border border-blue-600/30 rounded-lg p-4">
                     <h4 class="text-blue-400 font-medium mb-2">Review Guidelines</h4>
                     <ul class="text-blue-200 text-sm space-y-1">
@@ -102,7 +99,6 @@
                     </ul>
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="flex flex-col sm:flex-row gap-4 pt-4">
                     <button type="submit" 
                             class="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -119,7 +115,6 @@
                 </div>
             </form>
 
-            <!-- Delete Review Section -->
             <div class="mt-8 pt-6 border-t border-gray-700">
                 <div class="bg-red-600/10 border border-red-600/30 rounded-lg p-4">
                     <h4 class="text-red-400 font-medium mb-2">Delete Review</h4>
@@ -143,10 +138,10 @@
 
     <script>
         function setRating(rating) {
-            // Update hidden input
+     
             document.getElementById('rating-input').value = rating;
             
-            // Update star display
+    
             const stars = document.querySelectorAll('.star-btn');
             stars.forEach((star, index) => {
                 if (index < rating) {
@@ -158,17 +153,17 @@
                 }
             });
             
-            // Update rating text
+   
             const ratingTexts = ['', 'Poor', 'Fair', 'Good', 'Very Good', 'Excellent'];
             document.getElementById('rating-text').textContent = `${rating} out of 5 stars - ${ratingTexts[rating]}`;
         }
 
-        // Character counter
+
         document.getElementById('review').addEventListener('input', function(e) {
             const currentLength = e.target.value.length;
             document.getElementById('current-chars').textContent = currentLength;
             
-            // Color coding
+
             const charCount = document.getElementById('char-count');
             if (currentLength > 900) {
                 charCount.classList.add('text-red-400');
@@ -182,7 +177,7 @@
             }
         });
 
-        // Star hover effects
+ 
         document.querySelectorAll('.star-btn').forEach((star, index) => {
             star.addEventListener('mouseenter', function() {
                 const rating = index + 1;
