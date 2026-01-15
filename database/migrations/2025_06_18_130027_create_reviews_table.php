@@ -6,9 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+
     public function up(): void
     {
         Schema::create('reviews', function (Blueprint $table) {
@@ -16,16 +14,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->text('review');
-            $table->integer('rating'); // 1-5 star rating
+            $table->integer('rating'); 
             $table->timestamps();
             
-            $table->unique(['user_id', 'game_id']); // One review per user per game
+            $table->unique(['user_id', 'game_id']); 
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('reviews');
